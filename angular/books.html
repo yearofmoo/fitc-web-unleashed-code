@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html ng-app="BookApp">
+<head>
+<title>Book App</title>
+</head>
+<body>
+
+  <form ng-controller="BooksForm as form" name="booksForm" ng-submit="form.submit(book)">
+    <div class="field">
+      <label>Title:</label>
+      <input type="text" name="title" ng-model="book.title" required />
+    </div>
+    <div class="field">
+      <label>Categories:</label>
+      <select ng-model="book.category">
+        <div ng-repeat="category in catgories">
+          {{ category }}
+        </div>
+      </select>
+    </div>
+    <div class="field">
+      <label>ISBN:</label>
+      <input type="text" name="isbn" ng-model="book.isbn" required />
+    </div>
+    <div class="field">
+      <label>Description:</label>
+      <textarea name="description" ng-model="book.description" required></textarea>
+    </div>
+    <nav class="actions">
+      <input type="submit" />
+    </nav>
+  </form>
+
+  <div ng-controller="BooksCtrl as books">
+    <div ng-repeat="book in books.entries track by $index">
+      <h2>{{ book.title }}</h2>
+      <p>{{ book.description }}</p>
+      <img ng-src="{{ book.image }}" />
+    </div>
+  </div>
+
+<script type="text/javascript" src="./underscore.js"></script>
+<script type="text/javascript" src="./jquery.js"></script>
+<script type="text/javascript" src="./angular.js"></script>
+<script type="text/javascript" src="./app.js"></script>
+</body>
+</html>
